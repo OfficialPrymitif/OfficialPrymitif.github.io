@@ -1,41 +1,26 @@
-function renderTime(){
+let TextLabel1 = document.getElementById("v1");
+let AutomaticTimeUpdate = true;
 
-    // Dates
-    var mydate = new Date();
-    var year = mydate.getYear();
-       if (year < 1000){
-           year +=1900;
-       }
-    var day = mydate.getDay();
-    var month = mydate.getMonth();
-    var daym = mydate.getDate();
-    var dayarray = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-    var montharray = new Array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-    // Heures,
-    var currentTime = new Date();
-    var h = currentTime.getHours();
-    var m = currentTime.getMinutes();
-    var s = currentTime.getSeconds();
-       if(h == 24){
-           h = 0;
-       } else if(h > 12){
-           h = h - 0;
-       }
+function updateTimelabel(){
+    if(AutomaticTimeUpdate === true){
+        let CurrentDate = new Date();
+        let Month = AddZero(CurrentDate.getMonth());
+        let Year = AddZero(CurrentDate.getFullYear());
+        let Day = AddZero(CurrentDate.getDate());
 
-       if(h < 10){
-           h = "0" + h;
-       }
-       if(m < 10){
-           m = "0" + m;
-       }
-       if(s < 10){
-           s = "0" + s;
-       }
+        let Hours = AddZero(CurrentDate.getHours());
+        let Minutes = AddZero(CurrentDate.getMinutes());
+        let Seconds = AddZero(CurrentDate.getSeconds());
 
-       var myClock = document.getElementById("clockDisplay");
-       myClock.textContent = "" +dayarray[day]+ " " +daym+ " " +montharray[month]+  " " +year+ " | " +h+ ":" +m+ ":" +s;
-       myClock.innerText = "" +dayarray[day]+ " " +daym+ " " +montharray[month]+  " " +year+ " | " +h+ ":" +m+ ":" +s;
-
-       setTimeout("renderTime()", 1000);
+        CurrentTime_Result = Hours + ":" + Minutes + ":" + Seconds;
+        TextLabel1.innerText = CurrentTime_Result;
+        window.setTimeout(updateTimelabel, 100)
+    } else {
+        TextLabel1.innerText = "Automatic Time Update has been disabled"
     }
-renderTime();
+}
+
+function AddZero(v){
+    return v < 10 ? "0" + v: v;
+}
+updateTimelabel();

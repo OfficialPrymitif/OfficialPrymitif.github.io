@@ -1,3 +1,7 @@
+@font-face {
+    font-family: "Burbank1";
+    src: url(fonts/Burbank-Big-Condensed-Black.ttf);
+}
 *{
     margin: 0;
     padding: 0;
@@ -6,7 +10,14 @@
 .banner{
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(84, 0, 117, 0.829)), url(background.gif);
+    background-image: linear-gradient(60deg,rgba(0, 84, 153, 0.75), rgba(0, 137, 179, 0.829));
     background-size: cover;
     background-position: center;
+}
+.v_clock1{
+    list-style: none;
+    color: white;
+    font-size: 200px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
 }
