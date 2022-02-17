@@ -1,11 +1,12 @@
 let TextLabel1 = document.getElementById("v1");
+let TextLabel2 = document.getElementById("v2");
 let AutomaticTimeUpdate = true;
 
 function updateTimelabel(){
     if(AutomaticTimeUpdate === true){
         let CurrentDate = new Date();
         let Month = AddZero(CurrentDate.getMonth());
-        let Year = AddZero(CurrentDate.getFullYear());
+        let Year = CurrentDate.getFullYear();
         let Day = AddZero(CurrentDate.getDate());
 
         let Hours = AddZero(CurrentDate.getHours());
@@ -13,10 +14,13 @@ function updateTimelabel(){
         let Seconds = AddZero(CurrentDate.getSeconds());
 
         CurrentTime_Result = Hours + ":" + Minutes + ":" + Seconds;
+        CurrentDate_Result = Day + "/" + Month + "/" + Year;
         TextLabel1.innerText = CurrentTime_Result;
-        window.setTimeout(updateTimelabel, 100)
+        //TextLabel2.innerText = CurrentDate_Result;
+        window.setTimeout(updateTimelabel, 100);
     } else {
-        TextLabel1.innerText = "Automatic Time Update has been disabled"
+        TextLabel1.innerText = "Automatic Time Update has been disabled";
+        //TextLabel2.innerText = "Unavailable";
     }
 }
 
